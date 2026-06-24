@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mk体育 · 信息卡片介绍</title>
+    <style>
+        /* 全局重置与字体 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background-color: #f8fafc;
+        }
+
+        a {
+            color: #c2410c;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-thickness: 2px;
+            transition: color 0.2s, background-color 0.2s;
+        }
+
+        a:hover {
+            color: #9a3412;
+            background-color: #fff7ed;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0b1a2e 0%, #1c2e3f 100%);
+            color: #e2e8f0;
+            padding: 4rem 2rem 3.2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: #f8fafc;
+            border-radius: 30px 30px 0 0;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #fbbf24;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero .sub {
+            font-size: 1.15rem;
+            max-width: 640px;
+            margin: 0.5rem auto 1.2rem;
+            opacity: 0.85;
+        }
+
+        .hero .tagline {
+            display: inline-block;
+            background: rgba(251, 191, 36, 0.12);
+            backdrop-filter: blur(2px);
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #fde68a;
+            border: 1px solid rgba(251, 191, 36, 0.25);
+        }
+
+        /* 卡片网格 */
+        .cards-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2.8rem 1.5rem 2rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 1.5rem 1.8rem;
+            box-shadow: 0 10px 25px -8px rgba(0,0,0,0.06), 0 4px 10px rgba(0,0,0,0.02);
+            transition: transform 0.2s ease, box-shadow 0.25s ease;
+            border: 1px solid #e9edf2;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 30px -12px rgba(0,0,0,0.10);
+        }
+
+        .card-icon {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #1e293b;
+            letter-spacing: -0.3px;
+        }
+
+        .card p {
+            color: #475569;
+            font-size: 0.95rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card ul li {
+            padding: 0.25rem 0 0.25rem 1.6rem;
+            position: relative;
+            font-size: 0.92rem;
+            color: #334155;
+        }
+
+        .card ul li::before {
+            content: "·";
+            position: absolute;
+            left: 0.2rem;
+            color: #c2410c;
+            font-weight: 700;
+            font-size: 1.4rem;
+            line-height: 1.2;
+        }
+
+        .card .small-note {
+            margin-top: 0.8rem;
+            font-size: 0.88rem;
+            color: #64748b;
+            border-left: 3px solid #fbbf24;
+            padding-left: 0.8rem;
+            background: #fffbeb;
+            border-radius: 0 6px 6px 0;
+        }
+
+        /* 自然链接段落 + 提醒 */
+        .link-block {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem 2.5rem;
+        }
+
+        .link-block .inset-box {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2.2rem 2.2rem 2.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border: 1px solid #e2e8f0;
+        }
+
+        .link-block h2 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #0f172a;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.2px;
+        }
+
+        .link-block p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: #334155;
+        }
+
+        .link-block .reminder {
+            background: #f1f5f9;
+            padding: 1.2rem 1.5rem;
+            border-radius: 18px;
+            margin: 1.5rem 0 1rem;
+            border-left: 6px solid #c2410c;
+        }
+
+        .link-block .reminder strong {
+            color: #9a3412;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem 3.5rem;
+        }
+
+        .faq-mini details {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 0.8rem;
+            border: 1px solid #e2e8f0;
+            transition: border 0.15s;
+        }
+
+        .faq-mini details[open] {
+            border-color: #c2410c;
+        }
+
+        .faq-mini summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #1e293b;
+            padding: 0.3rem 0;
+            font-size: 1rem;
+        }
+
+        .faq-mini summary::marker {
+            color: #c2410c;
+        }
+
+        .faq-mini details p {
+            margin-top: 0.6rem;
+            font-size: 0.93rem;
+            color: #475569;
+            padding-left: 0.3rem;
+            border-left: 2px solid #fbbf24;
+            padding-left: 0.8rem;
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero {
+                padding: 2.8rem 1.2rem 2.6rem;
+            }
+            .card {
+                padding: 1.5rem 1.2rem;
+            }
+            .link-block .inset-box {
+                padding: 1.8rem 1.2rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .cards-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            padding: 1.8rem 1rem 2.2rem;
+            border-top: 1px solid #e2e8f0;
+            background: #f1f5f9;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 深色头图 -->
+<header class="hero">
+    <span class="tagline">简明指南 · 信息卡片</span>
+    <h1>mk体育</h1>
+    <p class="sub">从了解开始，找到适合你的运动信息路径。<br>一份温和的访问卡片集，帮你理清方向。</p>
+</header>
+
+<!-- 信息卡片网格 -->
+<section class="cards-section">
+    <div class="cards-grid">
+
+        <!-- 卡片1：主视觉 & 用途 -->
+        <div class="card">
+            <span class="card-icon">🏟️</span>
+            <h3>主视觉 · 用途速览</h3>
+            <p><strong>mk体育</strong> 聚合了多种运动项目的基础信息与动态内容，适合快速浏览赛事、规则及参与方式。界面以轻量卡片呈现，减少信息过载。</p>
+            <ul>
+                <li>赛事日历与结果摘要</li>
+                <li>运动项目基础入门</li>
+                <li>社区活动提醒</li>
+            </ul>
+            <div class="small-note">适合作为日常运动信息参考站，不替代官方公告。</div>
+        </div>
+
+        <!-- 卡片2：适合人群 -->
+        <div class="card">
+            <span class="card-icon">👥</span>
+            <h3>适合人群</h3>
+            <p>无论你是刚开始接触某项运动，还是想多了解比赛安排，这里的内容都经过整理，降低理解门槛。</p>
+            <ul>
+                <li>运动爱好者 &amp; 入门者</li>
+                <li>关注赛事但时间有限的上班族</li>
+                <li>想为家人或孩子选择运动项目的家长</li>
+                <li>内容创作者寻找可靠信息源</li>
+            </ul>
+        </div>
+
+        <!-- 卡片3：场景与提示 -->
+        <div class="card">
+            <span class="card-icon">🧭</span>
+            <h3>访问提醒 · 使用场景</h3>
+            <p>在查询具体比赛时间或项目规则时，建议结合官方渠道交叉确认。以下场景可优先参考：</p>
+            <ul>
+                <li>赛前快速了解对阵及场地</li>
+                <li>运动术语/规则入门解释</li>
+                <li>活动报名前的背景调查</li>
+            </ul>
+            <div class="small-note">信息更新周期可能因赛季而变，请留意页面标注的时效性。</div>
+        </div>
+
+    </div>
+</section>
+
+<!-- 自然链接段落 + 提醒区域 -->
+<section class="link-block">
+    <div class="inset-box">
+        <h2>从简明指南到有效访问</h2>
+        <p>
+            <a href="https://mksurvey.com.cn">mk体育</a> 作为信息聚合入口，其设计初衷是帮你节省筛选时间。不论你是在手机端还是电脑端打开，卡片式的布局都能保持较好的可读性。建议首次访问时先浏览“项目概览”栏目，那里涵盖了多数常见运动的入门须知。
+        </p>
+        <p>
+            如果你是运动社团或活动组织者，也可以将这里的内容作为参考资料分享给新成员。不过需要注意，具体报名链接或临时变更请以官方发布为准。
+        </p>
+
+        <div class="reminder">
+            <strong>📌 访问提醒</strong> — 部分外部链接会跳转到第三方平台，请留意域名与页面环境。建议不要直接在陌生页面输入个人敏感信息。使用 <a href="https://mksurvey.com.cn">mk体育</a> 时，保持浏览器与系统为最新版本，能获得更好的安全体验。
+        </div>
+    </div>
+</section>
+
+<!-- FAQ 摘要 -->
+<section class="faq-mini">
+    <details>
+        <summary>mk体育主要收录哪些运动？</summary>
+        <p>目前涵盖足球、篮球、网球、田径、游泳、骑行及部分新兴运动（如飞盘、攀岩）的基础信息与赛事摘要。项目列表会依据季节与热度不定期调整。</p>
+    </details>
+    <details>
+        <summary>页面上的数据多久更新一次？</summary>
+        <p>核心卡片与赛事预告通常每周同步一次；突发变动（如延期、取消）会在标题区域显示提示条，但无法保证实时同步。重要活动建议以官方渠道为准。</p>
+    </details>
+    <details>
+        <summary>使用前需要注册或登录吗？</summary>
+        <p>不需要。目前所有公开卡片与信息均免费浏览，无需创建账户。如果后续增加个性化功能，会提前在站内说明。</p>
+    </details>
+</section>
+
+<!-- 页脚 -->
+<footer class="footer-note">
+    <span>信息卡片 · 温和引导 · 日常参考</span><br>
+    <span style="font-size:0.8rem;">内容仅供一般性了解，不构成专业建议。</span>
+</footer>
+
+</body>
+</html>
