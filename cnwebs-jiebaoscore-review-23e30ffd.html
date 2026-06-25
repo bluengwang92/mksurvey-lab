@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信息索引·捷报比分 | 资料整理平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(145deg, #fde7d3 0%, #f9d4b0 45%, #f7c49a 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1.2rem;
+            color: #3d2c1b;
+            line-height: 1.65;
+        }
+
+        .card-container {
+            max-width: 1080px;
+            width: 100%;
+            background: rgba(255, 248, 240, 0.80);
+            backdrop-filter: blur(2px);
+            border-radius: 48px;
+            padding: 2.8rem 2rem;
+            box-shadow: 0 20px 40px -12px rgba(140, 85, 40, 0.35);
+            transition: all 0.25s ease;
+        }
+
+        /* hero区 */
+        .hero {
+            text-align: center;
+            margin-bottom: 2.8rem;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #7f4a2b, #b8733a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero .sub {
+            font-size: 1.15rem;
+            color: #6e4f33;
+            border-bottom: 3px solid #e7b68a;
+            display: inline-block;
+            padding-bottom: 6px;
+            background: #f7e2d0;
+            border-radius: 40px;
+            padding: 0.3rem 1.6rem;
+            background: rgba(235, 195, 155, 0.3);
+        }
+
+        /* 优势/特点区 三栏 */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 2.2rem 0 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem 1.4rem;
+            flex: 1 1 200px;
+            min-width: 180px;
+            box-shadow: 0 8px 18px -6px rgba(110, 60, 20, 0.12);
+            transition: 0.2s;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px -10px rgba(130, 70, 20, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            background: #f9e4d2;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.65rem;
+            color: #8d5a31;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #633f24;
+            margin-bottom: 0.4rem;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #4e3a29;
+        }
+
+        /* 说明区——以资料整理角度 */
+        .explain {
+            background: #fffbf7;
+            border-radius: 36px;
+            padding: 2rem 2rem 1.8rem;
+            margin: 1.8rem 0 2.2rem;
+            box-shadow: inset 0 1px 4px rgba(255, 215, 170, 0.5), 0 8px 20px -12px rgba(90, 50, 20, 0.15);
+        }
+
+        .explain h2 {
+            font-size: 1.8rem;
+            color: #734a2b;
+            border-left: 8px solid #d99d6a;
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .explain p {
+            margin-bottom: 0.9rem;
+            font-size: 1.02rem;
+        }
+
+        .explain strong {
+            color: #8b542b;
+        }
+
+        .explain .link-sentence {
+            background: #f6e6d8;
+            padding: 0.7rem 1.2rem;
+            border-radius: 60px;
+            display: inline-block;
+            margin-top: 0.3rem;
+        }
+
+        .explain a {
+            color: #975f30;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px dotted #cb9a70;
+            transition: 0.2s;
+        }
+
+        .explain a:hover {
+            color: #683f1f;
+            border-bottom: 2px solid #683f1f;
+        }
+
+        /* FAQ摘要 */
+        .faq-summary {
+            background: white;
+            border-radius: 32px;
+            padding: 1.6rem 1.8rem 2rem;
+            margin: 1.8rem 0;
+            box-shadow: 0 4px 14px rgba(130, 75, 35, 0.08);
+        }
+
+        .faq-summary h3 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #603d24;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 0.8rem;
+        }
+
+        .faq-item {
+            padding: 0.9rem 0 0.5rem;
+            border-bottom: 1px solid #f0dbca;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #734d2b;
+            margin-bottom: 0.25rem;
+        }
+
+        .faq-a {
+            font-size: 0.95rem;
+            color: #5d4736;
+        }
+
+        /* 底部链接 */
+        .footer-links {
+            margin-top: 2.2rem;
+            padding-top: 1.2rem;
+            border-top: 2px solid #ddbda2;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a {
+            color: #7c4f2b;
+            text-decoration: none;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            background: #f2dfd0;
+            transition: 0.2s;
+        }
+
+        .footer-links a:hover {
+            background: #dbb999;
+            color: #3b2719;
+        }
+
+        .footer-links .brand-link {
+            font-weight: 600;
+            background: #e9cfb8;
+            padding: 0.3rem 1.2rem;
+            border-radius: 60px;
+        }
+
+        .footer-note {
+            color: #4d3827;
+            font-size: 0.9rem;
+        }
+
+        .footer-note a {
+            background: none;
+            padding: 0;
+            border-bottom: 1px solid #966b44;
+            border-radius: 0;
+            color: #7a4f2d;
+        }
+
+        /* 响应式 */
+        @media (max-width: 680px) {
+            .card-container {
+                padding: 1.8rem 1.2rem;
+                border-radius: 32px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feature-card {
+                width: 100%;
+                max-width: 320px;
+            }
+
+            .explain h2 {
+                font-size: 1.5rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 0.8rem;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 460px) {
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <!-- hero -->
+        <div class="hero">
+            <h1>信息的脉络 · 比分索引</h1>
+            <div class="sub">捷报比分 · 资料整理视角</div>
+        </div>
+
+        <!-- 优势区：三个特点卡片 侧重资料整理/信息索引 -->
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <h3>结构存档</h3>
+                <p>赛事数据、历史记录以清晰条目归纳，便于回顾与对照。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>关键词索引</h3>
+                <p>按队伍、联赛、日期快速定位，减少翻阅负担。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>多维度梳理</h3>
+                <p>结合赛果、时间、对阵，形成可参考的简单档案。</p>
+            </div>
+        </div>
+
+        <!-- 说明区：从资料整理和信息索引切入 -->
+        <div class="explain">
+            <h2>从散落信息到有序索引</h2>
+            <p>比赛结束后，比分、时间、对阵常常分散在各处。如果能用一种温和的方式将它们归拢起来，后续回顾时会省去很多精力。这也是我们围绕<strong>捷报比分</strong>做资料整理的初衷——不是替代官方数据，而是提供一份经过梳理的信息路径。</p>
+            <p>日常使用中，你只需要将赛果、时间、关键事件记录在统一的条目下，再辅以简单的标签或分类，就能形成自己的小型数据库。比如按月份、联赛或球队建立索引，需要查找时直接定位。</p>
+            <p>如果你对这样整理信息的方式感兴趣，可以随时参考 <span class="link-sentence"><a href="https://cnwebs-jiebaoscore.com">捷报比分</a></span> 的页面结构，它本身也展示了如何将大量比赛信息编排得清晰可读。</p>
+        </div>
+
+        <!-- FAQ摘要 -->
+        <div class="faq-summary">
+            <h3>❓ 常见疑问摘要</h3>
+            <div class="faq-item">
+                <div class="faq-q">Q：信息索引适合什么样的人？</div>
+                <div class="faq-a">A：适合喜欢自己整理赛事资料、希望快速回顾某场比赛或系列赛的爱好者，不依赖第三方推送。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Q：如何开始建立自己的比分档案？</div>
+                <div class="faq-a">A：可以从最近关注的联赛开始，记录赛果、日期、对阵双方，再逐步添加备注或链接。保持条目简洁即可。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Q：使用捷报比分页面需要注册吗？</div>
+                <div class="faq-a">A：无需注册，直接打开即可浏览已整理好的比赛信息，适合作为公开参考。</div>
+            </div>
+        </div>
+
+        <!-- 底部链接区 -->
+        <div class="footer-links">
+            <div>
+                <a href="https://cnwebs-jiebaoscore.com" class="brand-link">捷报比分</a>
+                <span style="margin-left: 8px; color: #64492f;">· 索引页</span>
+            </div>
+            <div class="footer-note">
+                资料整理 · 信息来源 <a href="https://cnwebs-jiebaoscore.com">捷报比分</a> · 可作参考
+            </div>
+        </div>
+    </div>
+</body>
+</html>
